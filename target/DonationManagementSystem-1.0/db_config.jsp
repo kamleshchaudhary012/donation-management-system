@@ -15,12 +15,13 @@
     }
 %>--%>
 
-
 <%@ page import="java.sql.*" %>
 <%
     String dbUrl = "jdbc:mysql://mysql-31d74879-donation-project.a.aivencloud.com:27685/defaultdb?useSSL=false&allowPublicKeyRetrieval=true";
     String dbUser = "avnadmin";
-    String dbPass = "AVNS_KMhIEZRrjGkFHQEIGcb"; // yaha apna Aiven password daalo
+
+    // ONLY this (no hardcoded password)
+    String dbPass = System.getenv("DB_PASSWORD");
 
     Connection conn = null;
 
@@ -29,7 +30,7 @@
         conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
 
         if (conn != null) {
-            out.println("DB Connected Successfully ?");
+            out.println("DB Connected Successfully ....");
         }
 
     } catch (Exception e) {
