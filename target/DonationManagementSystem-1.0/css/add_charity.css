@@ -1,0 +1,68 @@
+/* css/add_charity.css */
+.form-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    border: 1px solid #eef2f6;
+}
+
+.form-container h2 {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    border-radius: 20px;
+    resize: vertical;
+}
+
+.form-submit {
+    background: #f97316;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.form-submit:hover {
+    background: #ea580c;
+}
+
+.back-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back-link a {
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 600;
+}

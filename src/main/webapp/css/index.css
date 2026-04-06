@@ -1,0 +1,173 @@
+/* css/index.css */
+/* Banner Section (formerly Hero) */
+.banner {
+    background: linear-gradient(120deg, #fff7ed, #fff3e6);
+    border-radius: 2rem;
+    margin: 40px 0;
+    padding: 48px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.banner-content {
+    flex: 1;
+}
+
+.banner-content h2 {
+    font-size: 2.7rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #0f172a;
+}
+
+.banner-content h2 span {
+    color: #f97316;
+    background: #ffedd5;
+    padding: 0 4px;
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    color: #475569;
+    margin-bottom: 28px;
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: #f97316;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 8px 16px -6px rgba(249,115,22,0.2);
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: #ea580c;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid #f97316;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-weight: 600;
+    color: #f97316;
+    cursor: pointer;
+    transition: 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background: #fff3e6;
+}
+
+.banner-image i {
+    font-size: 8rem;
+    color: #f97316;
+}
+
+/* Section titles */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 48px 0 24px 0;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #f97316;
+    margin-top: 8px;
+    border-radius: 4px;
+}
+
+/* Charity Grid */
+.charity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 32px 0;
+}
+
+.charity-card {
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.2s;
+    border: 1px solid #f1f5f9;
+    overflow: hidden;
+}
+
+.charity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+    border-color: #fed7aa;
+}
+
+.card-img {
+    height: 160px;
+    background: #ffedd5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #f97316;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    color: #475569;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #f97316;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .banner-content h2 {
+        font-size: 1.8rem;
+    }
+    .banner {
+        padding: 32px 24px;
+    }
+    .banner-image i {
+        font-size: 5rem;
+    }
+}
