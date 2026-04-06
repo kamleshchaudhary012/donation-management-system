@@ -30,7 +30,6 @@
             </form>
             <div class="form-footer">
                 <p>Don't have an account? <a href="register.jsp">Register here</a></p>
-                <p style="margin-top: 10px;">Use your account credentials. Admins and users can log in here.</p>
             </div>
         </div>
     </div> <!-- Close container from header.jsp -->
