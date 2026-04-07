@@ -35,8 +35,7 @@
             conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
 
             if (conn != null) {
-                // Debug (remove later)
-//                out.println("DB Connected Successfully ");
+                out.println("DB Connected Successfully ");
             }
         }
 
