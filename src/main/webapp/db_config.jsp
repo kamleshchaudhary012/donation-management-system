@@ -23,7 +23,7 @@
 
     // Environment variable password
     String dbPass = System.getenv("DB_PASSWORD");
-
+out.println("DB_PASS: " + dbPass);
     Connection conn = null;
 
     try {
