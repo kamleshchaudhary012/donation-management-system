@@ -35,7 +35,7 @@
 
             if (conn != null) {
                 // Connection success (don't print in production)
-                out.println("DB Connected Successfully ?");
+                //out.println("DB Connected Successfully ?");
             }
         }
 
