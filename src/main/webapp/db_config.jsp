@@ -65,7 +65,7 @@ try {
     conn = DriverManager.getConnection(dbUrl, props);
 
     if (conn != null) {
-        out.println("DB CONNECTED SUCCESS ");
+//        out.println("DB CONNECTED SUCCESS ");
     }
 
 } catch (Exception e) {
