@@ -15,31 +15,30 @@
     }
 %>--%>
 
-
 <%@ page import="java.sql.*" %>
 <%
-    String dbUrl = "jdbc:mysql://mysql-31d74879-donation-project.a.aivencloud.com:27685/defaultdb?sslMode=REQUIRED";
-    String dbUser = "avnadmin";
+String dbUrl = "jdbc:mysql://mysql-31d74879-donation-project.a.aivencloud.com:27685/defaultdb?sslMode=VERIFY_CA&enabledTLSProtocols=TLSv1.2&allowPublicKeyRetrieval=true";
+String dbUser = "avnadmin";
+String dbPass = System.getenv("DB_PASSWORD");
 
-    // Environment variable password
-    String dbPass = System.getenv("DB_PASSWORD");
-out.println("DB_PASS: " + dbPass);
-    Connection conn = null;
+Connection conn = null;
 
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+try {
+    Class.forName("com.mysql.cj.jdbc.Driver");
 
-        if (dbPass == null || dbPass.isEmpty()) {
-            out.println("Error: DB_PASSWORD not set ");
-        } else {
-            conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+    // SSL properties (IMPORTANT ?)
+    java.util.Properties props = new java.util.Properties();
+    props.setProperty("user", dbUser);
+    props.setProperty("password", dbPass);
+    props.setProperty("sslMode", "VERIFY_CA");
 
-            if (conn != null) {
-                out.println("DB Connected Successfully ");
-            }
-        }
+    conn = DriverManager.getConnection(dbUrl, props);
 
-    } catch (Exception e) {
-        out.println("Connection Error: " + e.getMessage());
+    if (conn != null) {
+        out.println("DB CONNECTED SUCCESS ?");
     }
+
+} catch (Exception e) {
+    out.println("Connection Error: " + e.getMessage());
+}
 %>
