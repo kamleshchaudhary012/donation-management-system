@@ -14,13 +14,14 @@
         out.println("Connection Error: " + e.getMessage());
     }
 %>--%>
+
+
 <%@ page import="java.sql.*" %>
 <%
-    // Aiven MySQL Connection Details
-    String dbUrl = "jdbc:mysql://mysql-31d74879-donation-project.a.aivencloud.com:27685/defaultdb?useSSL=false&allowPublicKeyRetrieval=true";
+    String dbUrl = "jdbc:mysql://mysql-31d74879-donation-project.a.aivencloud.com:27685/defaultdb?sslMode=REQUIRED";
     String dbUser = "avnadmin";
 
-    // Password from environment variable (IMPORTANT)
+    // Environment variable password
     String dbPass = System.getenv("DB_PASSWORD");
 
     Connection conn = null;
@@ -29,13 +30,13 @@
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         if (dbPass == null || dbPass.isEmpty()) {
-            out.println("Error: DB_PASSWORD not set ?");
+            out.println("Error: DB_PASSWORD not set ");
         } else {
             conn = DriverManager.getConnection(dbUrl, dbUser, dbPass);
 
             if (conn != null) {
-                // Connection success (don't print in production)
-                //out.println("DB Connected Successfully ?");
+                // Debug (remove later)
+//                out.println("DB Connected Successfully ");
             }
         }
 
