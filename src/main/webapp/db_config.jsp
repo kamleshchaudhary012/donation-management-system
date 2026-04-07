@@ -45,7 +45,7 @@ try {
 
 <%@ page import="java.sql.*" %>
 <%
-String dbUrl = "jdbc:mysql://mysql-31d74879-donation-project.a.aivencloud.com:27685/defaultdb?useSSL=true&allowPublicKeyRetrieval=true&verifyServerCertificate=false";
+    String dbUrl = "jdbc:mysql://mysql-31d74879-donation-project.a.aivencloud.com:27685/defaultdb?useSSL=true&requireSSL=true&verifyServerCertificate=false&allowPublicKeyRetrieval=true&connectTimeout=10000&socketTimeout=10000";
 
 String dbUser = "avnadmin";
 String dbPass = System.getenv("DB_PASSWORD");
