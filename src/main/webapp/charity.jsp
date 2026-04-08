@@ -194,7 +194,7 @@
             <% if (session.getAttribute("userEmail") == null) { %>
             <div class="login-prompt" style="background: #fff7ed; border: 1px dashed #f97316; padding: 24px; border-radius: 16px; text-align: center;">
                 <p style="margin-bottom: 12px; font-weight: 500;">Ready to make a difference?</p>
-                <a href="login.jsp?redirect=charity.jsp?id=<%= request.getParameter("id") %>" class="btn-primary">Login to Donate</a>
+                <a href="login.jsp?redirect=charity.jsp?id=<%= request.getParameter("id") %>" class="btn-primary">Login to Support Us</a>
                 <p style="margin-top: 12px; font-size: 0.9rem;">Don't have an account? <a href="register.jsp" style="color: #f97316; font-weight: 600;">Register here</a></p>
             </div>
             <% } else {%>

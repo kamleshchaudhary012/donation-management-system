@@ -12,7 +12,7 @@
                 <h2>Help provide <span>life-saving treatment</span> and support to those in need</h2>
                 <p>Every contribution brings healing, dignity, and hope. Join thousands of donors changing lives today.</p>
                 <div class="banner-buttons">
-                    <a href="charity.jsp" class="btn-primary">Donate now</a>
+                    <a href="charity.jsp" class="btn-primary">Support Now</a>
                     <button class="btn-outline" id="monthlyBtn">Give Monthly</button>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 <div class="card-content">
                     <h3><%= rsIndex.getString("name") %></h3>
                     <p><%= rsIndex.getString("description") %></p>
-                    <a data-id="<%= rsIndex.getInt("id") %>" class="card-link">Donate to this cause →</a>
+                    <a data-id="<%= rsIndex.getInt("id") %>" class="card-link">Support Us to this cause →</a>
                 </div>
             </div>
             <%

@@ -16,7 +16,7 @@
         <div class="navbar">
             <div class="logo"><h1>CharityX</h1></div>
             <div class="nav-links">
-                <a href="index.jsp">Donate</a>
+                <a href="index.jsp">Support Us</a>
                 <a href="about.jsp">About</a>
                 <%
                     String adminEmail = (String) session.getAttribute("adminEmail");

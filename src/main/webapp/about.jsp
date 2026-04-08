@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%--<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp">
     <jsp:param name="title" value="CharityX - About Us" />
     <jsp:param name="cssFile" value="about.css" />
@@ -35,5 +35,54 @@
             </div>
         </div>
     </div> <!-- Close container from header.jsp -->
+
+<jsp:include page="footer.jsp" />--%>
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="SupportX - About Us" />
+    <jsp:param name="cssFile" value="about.css" />
+    <jsp:param name="jsFile" value="about.js" />
+</jsp:include>
+
+<div class="about-container">
+    <h2>About SupportX</h2>
+    
+    <div class="about-content">
+
+        <p>
+        SupportX is an academic web-based project developed using 
+        JSP and Servlet technology. This platform demonstrates 
+        how an online support and contribution system works.
+        </p>
+
+        <p>
+        The purpose of this website is educational. It helps students 
+        understand how payment gateway integration, user login, 
+        and contribution management systems function in real-world applications.
+        </p>
+
+        <h3>Project Objective</h3>
+
+        <p>
+        The main objective of this project is to provide a practical 
+        demonstration of web technologies such as JSP, Servlet, 
+        database connectivity, and payment integration.
+        </p>
+
+        <h3>Important Notice</h3>
+
+        <p style="color:red; font-weight:bold;">
+        This website is created for educational and demonstration purposes only.
+        No real donations are collected on this platform.
+        All payments are processed in test mode only.
+        </p>
+
+    </div>
+</div>
+
+</div> <!-- Close container from header.jsp -->
 
 <jsp:include page="footer.jsp" />

@@ -34,7 +34,7 @@
                     session.setAttribute("userName", rs.getString("name"));
                     
                     
-                    // After login, show the landing page first, if the allredy selected the donate then redirect on the same page .
+                    // After login, show the landing page first, if the allredy selected the Support Us then redirect on the same page .
                     //response.sendRedirect("index.jsp");
                     String redirect = (String) session.getAttribute("redirectAfterLogin");
                     
