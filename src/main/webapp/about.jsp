@@ -38,8 +38,6 @@
 
 <jsp:include page="footer.jsp" />--%>
 
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp">
     <jsp:param name="title" value="SupportX - About Us" />
@@ -53,31 +51,47 @@
     <div class="about-content">
 
         <p>
-        SupportX is an academic web-based project developed using 
-        JSP and Servlet technology. This platform demonstrates 
-        how an online support and contribution system works.
+        SupportX is a web-based platform developed using 
+        JSP and Servlet technology. The platform provides 
+        an easy and secure way for users to contribute 
+        support through online payment services.
         </p>
 
         <p>
-        The purpose of this website is educational. It helps students 
-        understand how payment gateway integration, user login, 
-        and contribution management systems function in real-world applications.
+        Our goal is to provide a simple digital platform 
+        where users can support different initiatives 
+        and services through predefined support packages.
+        All payments are processed securely using 
+        trusted payment gateway integration.
         </p>
 
-        <h3>Project Objective</h3>
+        <h3>Our Objective</h3>
 
         <p>
-        The main objective of this project is to provide a practical 
-        demonstration of web technologies such as JSP, Servlet, 
-        database connectivity, and payment integration.
+        The main objective of this platform is to offer 
+        a structured support system where users can 
+        choose different support packages and complete 
+        payments through an online gateway. The system 
+        also demonstrates modern web application features 
+        such as user login, secure transactions, 
+        and contribution management.
         </p>
 
-        <h3>Important Notice</h3>
+        <h3>Transparency & Usage</h3>
 
-        <p style="color:red; font-weight:bold;">
-        This website is created for educational and demonstration purposes only.
-        No real donations are collected on this platform.
-        All payments are processed in test mode only.
+        <p>
+        We aim to maintain transparency in all support 
+        transactions. Users can select predefined 
+        support packages based on their preferences. 
+        Payment details are securely processed through 
+        integrated payment gateway services.
+        </p>
+
+        <h3>Contact Information</h3>
+
+        <p>
+        For any queries or support related questions, 
+        users can contact us through the Contact Us page.
         </p>
 
     </div>

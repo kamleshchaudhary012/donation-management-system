@@ -1,5 +1,178 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="SupportX - Home" />
+    <jsp:param name="cssFile" value="index.css" />
+    <jsp:param name="jsFile" value="index.js" />
+</jsp:include>
+
+<%@ include file="db_config.jsp" %>
+
+
+<!-- Banner Section -->
+
+<div class="banner">
+
+    <div class="banner-content">
+
+        <h2>
+            Provide <span>digital support</span> 
+            through secure online payment
+        </h2>
+
+        <p>
+            This platform allows users to choose 
+            different support categories and 
+            complete secure payments using 
+            an online payment gateway.
+        </p>
+
+        <div class="banner-buttons">
+
+            <a href="charity.jsp"
+               class="btn-primary">
+
+                Choose Support Package
+
+            </a>
+
+            <button class="btn-outline"
+                    id="monthlyBtn">
+
+                View Packages
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="banner-image">
+        <i class="fas fa-hand-holding-heart"></i>
+    </div>
+
+</div>
+
+
+
+<!-- Section Title -->
+
+<div class="section-title">
+    Available Support Categories
+</div>
+
+
+
+<!-- Support Cards -->
+
+<div class="charity-grid">
+
+    <%    PreparedStatement pstmtIndex = null;
+        ResultSet rsIndex = null;
+
+        try {
+
+            if (conn != null) {
+
+                String query
+                        = "SELECT * FROM charities";
+
+                pstmtIndex
+                        = conn.prepareStatement(query);
+
+                rsIndex
+                        = pstmtIndex.executeQuery();
+
+                while (rsIndex.next()) {
+
+    %>
+
+    <div class="charity-card">
+
+        <div class="card-img"
+
+             data-img="<%= rsIndex.getString("image_url")%>"
+
+             style="background-size: cover;
+             background-position: center;
+             height: 200px;">
+
+        </div>
+
+        <div class="card-content">
+
+            <h3>
+                <%= rsIndex.getString("name")%>
+            </h3>
+
+            <p>
+                <%= rsIndex.getString("description")%>
+            </p>
+
+            <a data-id="<%= rsIndex.getInt("id")%>"
+               class="card-link">
+
+                View Support Details →
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <%
+
+                }
+
+            } else {
+
+                out.println(
+                        "<p>Database connection unavailable. Please check your setup.</p>"
+                );
+
+            }
+
+        } catch (Exception e) {
+
+            out.println(
+                    "<p>Error fetching categories: "
+                    + e.getMessage()
+                    + "</p>"
+            );
+
+        } finally {
+
+            if (rsIndex != null)
+            try {
+                rsIndex.close();
+            } catch (SQLException e) {
+            }
+
+            if (pstmtIndex != null)
+            try {
+                pstmtIndex.close();
+            } catch (SQLException e) {
+            }
+
+            if (conn != null)
+            try {
+                conn.close();
+            } catch (SQLException e) {
+            }
+
+        }
+
+    %>
+
+</div>
+
+</div> <!-- Close container from header.jsp -->
+
+<jsp:include page="footer.jsp" />
+
+<%--<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <jsp:include page="header.jsp">
     <jsp:param name="title" value="CharityX - Home" />
     <jsp:param name="cssFile" value="index.css" />
@@ -57,4 +230,4 @@
         </div>
     </div> <!-- Close container from header.jsp -->
 
-<jsp:include page="footer.jsp" />
+<jsp:include page="footer.jsp" />--%>

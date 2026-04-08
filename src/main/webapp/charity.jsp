@@ -191,10 +191,10 @@
             <% if (isMonthly) { %>
             <p style="margin-bottom: 15px; font-size: 0.9rem; color: #0d9488;">You are setting up a monthly recurring donation.</p>
             <% } %>
-            <% if (session.getAttribute("userEmail") == null) { %>
+            <% if (session.getAttribute("userEmail") == null) {%>
             <div class="login-prompt" style="background: #fff7ed; border: 1px dashed #f97316; padding: 24px; border-radius: 16px; text-align: center;">
                 <p style="margin-bottom: 12px; font-weight: 500;">Ready to make a difference?</p>
-                <a href="login.jsp?redirect=charity.jsp?id=<%= request.getParameter("id") %>" class="btn-primary">Login to Support Us</a>
+                <a href="login.jsp?redirect=charity.jsp?id=<%= request.getParameter("id")%>" class="btn-primary">Login to Support Us</a>
                 <p style="margin-top: 12px; font-size: 0.9rem;">Don't have an account? <a href="register.jsp" style="color: #f97316; font-weight: 600;">Register here</a></p>
             </div>
             <% } else {%>
@@ -239,7 +239,7 @@
 <% }%>
 
 </div> <!-- Close container from header.jsp -->
-<script>
+<!--<script>
 
 // Auto fill preset amount buttons
     document.addEventListener("DOMContentLoaded", function () {
@@ -323,6 +323,147 @@
         var rzp = new Razorpay(options);
 
         rzp.open();
+
+    }
+
+</script>-->
+
+
+
+
+
+<script>
+
+// Auto fill preset amount buttons
+    document.addEventListener("DOMContentLoaded", function () {
+
+        var buttons = document.querySelectorAll(".amount-btn");
+
+        buttons.forEach(function (btn) {
+
+            btn.addEventListener("click", function () {
+
+                document.getElementById("amount").value =
+                        this.getAttribute("data-amount");
+
+            });
+
+        });
+
+    });
+
+
+// =============================
+// START RAZORPAY PAYMENT
+// =============================
+
+    function startPayment() {
+
+        var amount = document.getElementById("amount").value;
+
+        if (amount == "" || amount < 10) {
+
+            alert("Minimum donation is ₹10");
+            return;
+
+        }
+
+        // Monthly donation support
+
+        var recurringDayField =
+                document.getElementById("recurringDay");
+
+        var recurringDay =
+                recurringDayField ?
+                recurringDayField.value :
+                "";
+
+
+        // =============================
+        // CREATE ORDER FROM SERVLET
+        // =============================
+
+        fetch("CreateOrderServlet", {
+
+            method: "POST",
+
+            headers: {
+                'Content-Type':
+                        'application/x-www-form-urlencoded'
+            },
+
+            body: "amount=" + amount
+
+        })
+
+                .then(response => response.json())
+
+                .then(order => {
+
+                    var options = {
+
+                        // 🔴 PUT YOUR LIVE KEY HERE
+                        "key": "rzp_live_YOUR_KEY_HERE",
+
+                        "amount": order.amount,
+
+                        "currency": "INR",
+
+                        "order_id": order.id,
+
+                        "name": "CharityX",
+
+                        "description": "Donation Payment",
+
+                        "handler": function (response) {
+
+                            const paymentId =
+                                    response.razorpay_payment_id;
+
+                            const orderId =
+                                    response.razorpay_order_id;
+
+                            const signature =
+                                    response.razorpay_signature;
+
+
+                            // =============================
+                            // SEND DATA TO THANKYOU PAGE
+                            // =============================
+
+                            var form =
+                                    document.createElement("form");
+
+                            form.method = "POST";
+
+                            form.action = "thankyou.jsp";
+
+                            form.innerHTML = `
+
+                        <input type="hidden" name="payment_id" value="${paymentId}">
+                        <input type="hidden" name="order_id" value="${orderId}">
+                        <input type="hidden" name="signature" value="${signature}">
+                        <input type="hidden" name="amount" value="${amount}">
+                        <input type="hidden" name="charityId" value="<%= charityId%>">
+                        <input type="hidden" name="frequency" value="<%= isMonthly ? "Monthly" : "One-time"%>">
+                        <input type="hidden" name="recurringDay" value="${recurringDay}">
+
+                                        `;
+
+                            document.body.appendChild(form);
+
+                            form.submit();
+
+                        }
+
+                    };
+
+                    var rzp =
+                            new Razorpay(options);
+
+                    rzp.open();
+
+                });
 
     }
 
