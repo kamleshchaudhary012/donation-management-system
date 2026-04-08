@@ -32,8 +32,20 @@
                     session.setAttribute("userId", rs.getInt("id"));
                     session.setAttribute("userEmail", email);
                     session.setAttribute("userName", rs.getString("name"));
-                    // After login, show the landing page first.
-                    response.sendRedirect("index.jsp");
+                    
+                    
+                    // After login, show the landing page first, if the allredy selected the donate then redirect on the same page .
+                    //response.sendRedirect("index.jsp");
+                    String redirect = (String) session.getAttribute("redirectAfterLogin");
+                    
+                    if(redirect != null)
+                    {
+                        session.removeAttribute("redirectAfterLogin");
+                        response.sendRedirect(redirect);
+                        
+                    }else{
+                        response.sendRedirect("index.jsp");
+                    }
                 }
             } else {
                 String checkQuery = "SELECT id FROM users WHERE email = ? LIMIT 1";
