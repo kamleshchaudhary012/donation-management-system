@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ include file="db_config.jsp" %>
-<%    String charityId = request.getParameter("id");
+<%  
+    String charityId = request.getParameter("id");
     String type = request.getParameter("type"); // "Monthly" or null/One-time
     boolean isMonthly = "Monthly".equals(type);
     boolean showAll = (charityId == null || charityId.trim().isEmpty());
@@ -239,7 +240,7 @@
 <% }%>
 
 </div> <!-- Close container from header.jsp -->
-<!--<script>
+<script>
 
 // Auto fill preset amount buttons
     document.addEventListener("DOMContentLoaded", function () {
@@ -287,7 +288,7 @@
 
         var options = {
 
-            "key": "",
+            "key": "rzp_test_Sb3rEnuMz9b4ki",
 
             "amount": amount * 100,
 
@@ -326,12 +327,12 @@
 
     }
 
-</script>-->
+</script>
 
 
 
 
-
+<!--
 <script>
 
 // Auto fill preset amount buttons
@@ -402,8 +403,9 @@
 
                     var options = {
 
-                        // 🔴 PUT YOUR LIVE KEY HERE
-                        "key": "rzp_live_YOUR_KEY_HERE",
+                        //  PUT YOUR LIVE KEY HERE
+                        "key": "rzp_test_Sb3rEnuMz9b4ki",
+//                        rzp_live_Sa9wJWyUqpcoXs
 
                         "amount": order.amount,
 
@@ -467,5 +469,5 @@
 
     }
 
-</script>
+</script>-->
 <jsp:include page="footer.jsp" />
