@@ -31,8 +31,9 @@
             </div>
 
         </div>
+          </div>
 
-        <!-- Professional Disclaimer (LIVE VERSION) -->
+<!--         Professional Disclaimer (LIVE VERSION) 
         <div class="disclaimer-box">
 
             <h3>Disclaimer</h3>
@@ -58,7 +59,7 @@
                 and Refund Policy.
             </p>
 
-        </div>
+        </div>-->
 
         <!-- Copyright -->
         <div class="copyright">
@@ -73,27 +74,7 @@
 
         </div>
 
-    </div>
-    <div class="footer-col">
-    <h4>Legal</h4>
-
-    <a href="privacy.jsp">
-        Privacy Policy
-    </a>
-
-    <a href="terms.jsp">
-        Terms & Conditions
-    </a>
-
-    <a href="refund.jsp">
-        Refund Policy
-    </a>
-
-    <a href="disclaimer.jsp">
-        Disclaimer
-    </a>
-
-</div>
+  
 </div>
 
 </body>

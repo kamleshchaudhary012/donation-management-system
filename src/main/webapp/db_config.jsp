@@ -13,7 +13,7 @@
     } catch (Exception e) {
         out.println("Connection Error: " + e.getMessage());
     }
-%>--%>
+%>
 
 <%--<%@ page import="java.sql.*" %>
 <%
