@@ -2,25 +2,49 @@
 <%@ page import="java.sql.*" %>
 <%@ include file="db_config.jsp" %>
 
-<%    String charityIdStr = request.getParameter("charityId");
-    String amountStr = request.getParameter("amount");
-    String paymentId = request.getParameter("payment_id");
-    String frequency = request.getParameter("frequency");
-    String recurringDayStr = request.getParameter("recurringDay");
+<%
+    /* =========================
+   GET DATA (Razorpay + fallback)
+   ========================= */
+// Razorpay params
+    String paymentId = request.getParameter("razorpay_payment_id");
 
+// Fallback from session (VERY IMPORTANT)
+    String charityIdStr = request.getParameter("charityId");
+    String amountStr = request.getParameter("amount");
+
+    if (charityIdStr == null) {
+        charityIdStr = (String) session.getAttribute("charityId");
+    }
+    if (amountStr == null) {
+        amountStr = (String) session.getAttribute("amount");
+    }
+
+    String frequency = request.getParameter("frequency");
+    if (frequency == null) {
+        frequency = (String) session.getAttribute("frequency");
+    }
     if (frequency == null) {
         frequency = "One-time";
+    }
+
+    String recurringDayStr = request.getParameter("recurringDay");
+    if (recurringDayStr == null) {
+        recurringDayStr = (String) session.getAttribute("recurringDay");
     }
 
     Integer userId = (Integer) session.getAttribute("userId");
 
     boolean success = false;
 
+    /* =========================
+   MAIN LOGIC
+   ========================= */
     if (paymentId != null && charityIdStr != null && amountStr != null && userId != null) {
 
         try {
 
-            // ✅ START TRANSACTION FIRST
+            // ✅ START TRANSACTION
             conn.setAutoCommit(false);
 
             int charityId = Integer.parseInt(charityIdStr);
@@ -29,7 +53,7 @@
             Integer recurringDay = null;
             Date nextChargeDate = null;
 
-            // ✅ Monthly logic (safe)
+            // ✅ MONTHLY LOGIC
             if ("Monthly".equalsIgnoreCase(frequency)) {
 
                 if (recurringDayStr != null && !recurringDayStr.isEmpty()) {
@@ -58,7 +82,7 @@
                 nextStmt.close();
             }
 
-            // ✅ Insert Donation
+            // INSERT DONATION
             String insertDonation
                     = "INSERT INTO donations "
                     + "(user_id, charity_id, amount, frequency, recurring_day, next_charge_date, is_active, status, payment_id) "
@@ -88,7 +112,7 @@
             pstmt1.executeUpdate();
             pstmt1.close();
 
-            // ✅ Update Charity Amount
+            // ✅ UPDATE CHARITY
             String updateCharity
                     = "UPDATE charities SET raised_amount = raised_amount + ? WHERE id = ?";
 
@@ -100,13 +124,13 @@
             pstmt2.executeUpdate();
             pstmt2.close();
 
-            // ✅ COMMIT
+            //  COMMIT
             conn.commit();
             success = true;
 
         } catch (Exception e) {
 
-            // ✅ SAFE ROLLBACK
+            //  SAFE ROLLBACK
             if (conn != null) {
                 try {
                     if (!conn.getAutoCommit()) {
@@ -117,11 +141,10 @@
                 }
             }
 
-            out.println("Error: " + e.getMessage());
-
+            out.println("DB Error: " + e.getMessage());
         } finally {
 
-            // ✅ Reset connection safely
+            //  RESET CONNECTION
             if (conn != null) {
                 try {
                     conn.setAutoCommit(true);
@@ -133,7 +156,9 @@
         }
     }
 
-// ❌ If failed
+    /* =========================
+   REDIRECT IF FAILED
+   ========================= */
     if (!success) {
 
         if (userId == null) {
@@ -164,14 +189,14 @@
     </h2>
 
     <p>
-        Your generous contribution of
+        Your contribution of
         <strong>₹<%= amountStr%></strong>
 
         <%= "Monthly".equals(frequency)
                 ? " every month"
                 : ""%>
 
-        has been successfully received.
+        has been successfully received 🎉
     </p>
 
     <div class="status-actions">
