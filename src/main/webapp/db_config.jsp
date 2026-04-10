@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*" %>
+<%--<%@ page import="java.sql.*" %>
 <%
     
     String dbUrl = "jdbc:mysql://localhost:3306/charityx_db"; 
@@ -12,10 +12,10 @@
     } catch (Exception e) {
         out.println("Connection Error: " + e.getMessage());
     }
-%>
+%>--%>
 
 <!-- for live database cooncetivity-->
-<%--<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*" %>
 <%
     String dbUrl = "jdbc:mysql://mysql-31d74879-donation-project.a.aivencloud.com:27685/defaultdb?useSSL=true&requireSSL=true&verifyServerCertificate=false&allowPublicKeyRetrieval=true&connectTimeout=10000&socketTimeout=10000";
 
@@ -43,4 +43,4 @@ try {
 } catch (Exception e) {
     out.println("Connection Error: " + e.getMessage());
 }
-%>--%>
+%>
