@@ -32,7 +32,7 @@
         </dependency>
         
         <!-- MySQL Connector Dependency for locally run.... -->
-<!--    <dependency>
+        <!--    <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
@@ -52,8 +52,26 @@
             <artifactId>razorpay-java</artifactId>
             <version>1.4.3</version>
         </dependency>
+        
+
+    <!-- Existing dependencies hoy to ahi rehva do -->
+
+    <!-- JavaMail for Java EE 8 -->
+    <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>javax.mail</artifactId>
+        <version>1.6.2</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>1.1.1</version>
+    </dependency>
+
+
     </dependencies>
-    
+ 
     
     <!--     <build>
         <plugins>

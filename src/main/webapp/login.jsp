@@ -36,6 +36,9 @@
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
+            <div class="form-footer">
+            <p>Forget password ? <a href="forget.jsp">click here</a></p>
+        </div>
         </div>
         <button type="submit" class="form-submit">Log In</button>
     </form>
@@ -43,6 +46,5 @@
         <p>Don't have an account? <a href="register.jsp">Register here</a></p>
     </div>
 </div>
-</div> <!-- Close container from header.jsp -->
 
 <jsp:include page="footer.jsp" />
